@@ -1,0 +1,34 @@
+-- DML (Data Manipulation Language) --
+-- SELECT, INSERT, DELETE, UPDATE
+
+-- (Usando sakila-database)
+
+SELECT film_id, title
+FROM film
+WHERE length = 60;
+
+-- EXPLAIN <query>: usado para conseguir informações da query
+EXPLAIN SELECT count(*) from film;
+EXPLAIN SELECT count(film_id) from film;
+
+-- ORDER BY <col> [ASC/DESC]: sempre no fim, ordena o select
+SELECT film_id, title, length
+FROM film
+WHERE length > 180
+ORDER BY length DESC, title;
+
+-- LIKE: usado para comparar string com padrão
+SELECT film_id, title, length
+FROM film
+WHERE length < 111 && title = 'MATRIX SNOWMAN';
+
+-- Exercício: Filtre os filmes que tenham duração entre 1h e 1h30 e ordene maior > menor
+SELECT film_id, title, length
+FROM film
+WHERE length >= 60 && length <= 90
+ORDER BY length DESC;
+
+-- SELECT DISTINCT: Só puxa valores diferentes (elimina repetições)
+SELECT DISTINCT city, country_id
+FROM city
+WHERE country_id = 50;
